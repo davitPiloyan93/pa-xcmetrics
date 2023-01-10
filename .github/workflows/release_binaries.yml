@@ -19,7 +19,7 @@ jobs:
       - name: Build arm64-apple-macosx
         run: "swift build -c release --triple arm64-apple-macosx"
       - name: Zip arm64-apple-macosx release
-        run: "zip -j releases/XCMetrics-macOS-arm64-$TAG_NAME.zip .build/release/xcmetrics"
+        run: "mkdir releases && zip -j releases/XCMetrics-macOS-arm64-$TAG_NAME.zip .build/release/xcmetrics"
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v1-release
         with:
