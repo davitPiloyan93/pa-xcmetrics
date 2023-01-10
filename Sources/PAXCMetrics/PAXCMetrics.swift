@@ -8,7 +8,7 @@ public struct PAXCMetrics {
         let metrics = XCMetrics.parseOrExit()
         let configuration = XCMetricsConfiguration()
         let rootDir = ProcessInfo.processInfo.environment["SRCROOT"] ?? ""
-        configuration.add(plugin: GitPlugin(gitDirectoryPath: rootDir).create())
+        configuration.add(plugin: GitPlugin(gitDirectoryPath: rootDir, gitData: [.branch, .latestSHA, .userEmail(redacted: false)]).create())
         metrics.run(with: configuration)
     }
 }
